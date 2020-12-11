@@ -57,3 +57,46 @@ use camelCase for html attribute
 className instead of class
 close every element
 formatting
+
+### props
+
+#### the children is pass
+
+```javascript
+function BookList() {
+  return (
+    <section className="bookList">
+      <Book
+        job="developer"
+        img={firstBook.img}
+        author={firstBook.author}
+        title={firstBook.title}
+      >
+        <p>This is in The children</p>{" "}
+      </Book>
+      <Book
+        img={secondBook.img}
+        author={secondBook.author}
+        title={secondBook.title}
+      />
+      <Book make="make by rokomari" price={22} />
+    </section>
+  );
+}
+
+const Book = (props) => {
+  const { img, title, author } = props;
+  return (
+    <article className="book">
+      <img src={img} alt="" />
+      <h1> {title}</h1>
+      <h4 style={{ color: "red", fontSize: "0.75rem", marginTop: "0.25rem" }}>
+        {" "}
+        {author}{" "}
+      </h4>
+      {props.children}
+      {/* <p>{props.job}</p> */}
+    </article>
+  );
+};
+```
